@@ -315,12 +315,12 @@ return [
         ],
         [
             'name' => 'Sweetalert2',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@9',
                 ],
             ],
         ],
@@ -340,5 +340,16 @@ return [
                 ],
             ],
         ],
+        [
+            'name' => 'axios',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//unpkg.com/axios/dist/axios.min.js'
+                ]
+            ]
+        ]
     ],
 ];
