@@ -216,4 +216,20 @@
             })
         }
     </script>
+
+    @if(Session::has('sucesso') || Session::has('falha'))
+        <script>
+            Swal.fire({
+                text: '{{ Session::get('sucesso') ?? Session::get('falha') }}',
+                @if (Session::has('sucesso'))
+                    icon: 'success',
+                @else
+                    icon: 'error',
+                @endif
+                timer: 2000,
+                showConfirmButton: false,
+                timerProgressBar: true
+            })
+        </script>
+    @endif
 @stop
