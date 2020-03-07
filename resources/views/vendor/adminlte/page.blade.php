@@ -204,6 +204,12 @@
                     axios.delete(rota)
                         .then(function (res) {
                             $('#' + Object.keys(window.LaravelDataTables)[0]).DataTable().ajax.reload();
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Perfeito!',
+                                text: 'Excluido com sucesso'
+                            })
                         })
                         .catch(function (err) {
                             Swal.fire({
