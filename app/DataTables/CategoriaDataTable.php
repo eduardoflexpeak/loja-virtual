@@ -25,7 +25,7 @@ class CategoriaDataTable extends DataTable
             ->addColumn('action', function ($categoria) {
 
                 $acoes = link_to(
-                    route('admin.user.edit', $categoria),
+                    route('admin.categoria.edit', $categoria),
                     'Editar',
                     ['class' => 'btn btn-sm btn-primary']
                 );
@@ -34,7 +34,7 @@ class CategoriaDataTable extends DataTable
                             'Excluir',
                             ['class' =>
                                 'btn btn-sm btn-danger ml-1',
-                                'onclick' => "excluir('" . route('admin.user.destroy', $categoria) . "')"
+                                'onclick' => "excluir('" . route('admin.categoria.destroy', $categoria) . "')"
                             ]
                         );
 

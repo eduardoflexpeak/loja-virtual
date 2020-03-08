@@ -34,23 +34,40 @@ class CategoriaController extends Controller
                 ->withFalha('Ocorreu um erro ao salvar');
     }
 
-    public function show(Categoria $categoria)
+    public function edit($id)
     {
-        //
+        $retorno = CategoriaService::getCategoriaPorId($id);
+
+        if ($retorno['status']) {
+            return view('admin.categoria.form', [
+                'categoria' => $retorno['categoria']
+            ]);
+        }
+
+        return back()->withFalha('Ocorreu um erro ao selecionar a categoria');
     }
 
-    public function edit(Categoria $categoria)
+    public function update(Request $request, $id)
     {
-        //
+        $retorno = CategoriaService::update($request->all(), $id);
+
+        if ($retorno['status']) {
+            return redirect()->route('admin.categoria.index')
+                    ->withSucesso('Categoria atualizada com sucesso');
+        }
+
+        return back()->withInput()
+                ->withFalha('Ocorreu um erro ao atualizar');
     }
 
-    public function update(Request $request, Categoria $categoria)
+    public function destroy($id)
     {
-        //
-    }
+        $user = CategoriaService::destroy($id);
 
-    public function destroy(Categoria $categoria)
-    {
-        //
+        if ($user['status']) {
+            return 'Categoria excluída com sucesso';
+        }
+
+        abort(403, 'Erro ao excluir, ' . $user['erro']);
     }
 }
