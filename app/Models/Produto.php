@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Produto extends Model
 {
     protected $guarded = ['id'];
 
-    public function produtos()
+    public function categorias()
     {
-        return $this->belongsToMany(Produto::class);
+        return $this->belongsToMany(Categoria::class);
     }
 }

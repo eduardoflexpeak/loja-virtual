@@ -62,12 +62,17 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        $user = CategoriaService::destroy($id);
+        $retorno = CategoriaService::destroy($id);
 
-        if ($user['status']) {
+        if ($retorno['status']) {
             return 'Categoria excluída com sucesso';
         }
 
-        abort(403, 'Erro ao excluir, ' . $user['erro']);
+        abort(403, 'Erro ao excluir, ' . $retorno['erro']);
+    }
+
+    public function listarCategorias(Request $request)
+    {
+        return CategoriaService::listarCategorias($request);
     }
 }
