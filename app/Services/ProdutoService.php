@@ -60,7 +60,7 @@ class ProdutoService
             $produto = Produto::findOrFail($id);
             $produto->update(Arr::except($request, ['categorias', 'imagem_temp']));
 
-            if ($request['imagem_temp']) {
+            if (isset($request['imagem_temp'])) {
                 $produto->update([
                     'imagem' => self::uploadImagem($produto, $request['imagem_temp'])
                 ]);
@@ -75,7 +75,6 @@ class ProdutoService
             ];
         } catch(Exception $err) {
             DB::rollBack();
-            dd($err->getMessage());
             return [
                 'status' => false,
                 'erro' => $err->getMessage()
