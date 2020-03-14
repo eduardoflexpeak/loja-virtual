@@ -73,6 +73,11 @@ class CategoriaService
         }
     }
 
+    public static function categorias()
+    {
+        return Categoria::all();
+    }
+
     public static function listarCategorias($request)
     {
         $termoPesquisa = trim($request->searchTerm);

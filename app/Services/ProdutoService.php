@@ -99,6 +99,11 @@ class ProdutoService
         }
     }
 
+    public static function listaProdutos()
+    {
+        return Produto::paginate(4);
+    }
+
     public static function uploadImagem($produto, $arquivo)
     {
         $imagem = $produto->id . time() . "." . $arquivo->getClientOriginalExtension();
