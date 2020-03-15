@@ -346,8 +346,8 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//unpkg.com/axios/dist/axios.min.js'
+                    'asset' => true,
+                    'location' => '/js/axios.min.js'
                 ]
             ]
         ]

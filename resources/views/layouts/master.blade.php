@@ -18,22 +18,34 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categorias
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach ($categorias as $cat)
-                                <a class="dropdown-item" href="{{ route('publico.categoria', $cat) }}">{{ $cat->nome }}</a>
-                            @endforeach
-                        </div>
-                    </li>
+                    @isset($categorias)
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categorias
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach ($categorias as $cat)
+                                    <a class="dropdown-item" href="{{ route('publico.categoria', $cat) }}">{{ $cat->nome }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                    @endisset
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{{ route('publico.carrinho.index') }}">Carrinho</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{{ route('publico.conta.index') }}">Sua Conta</a>
                     </li>
+                    @if(Auth::user())
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Sair
+                            </a>
+                            <form id="logout-form" action="{{ route("logout") }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
