@@ -18,6 +18,7 @@ Route::namespace('Publico')->name('publico.')->group(function () {
     Route::get('/', 'LojaController@index')->name('loja');
     Route::resource('carrinho', 'CarrinhoController');
     Route::get('categoria/{id}', 'CategoriaController@index')->name('categoria');
+    Route::get('produto/{id}', 'ProdutoController@detalhes')->name('produto.detalhes');
 
     Route::middleware('cliente')->group(function () {
         Route::resource('conta', 'ContaController');

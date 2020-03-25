@@ -5,7 +5,9 @@
         @foreach ($produtos as $p)
             <div class="col-md-3">
                 <div class="card mt-2">
-                    <img src="{{ asset('/imagens/' . $p->imagem) }}" class="card-img-top" alt="...">
+                    <a href="{{ route('publico.produto.detalhes', $p->id) }}">
+                        <img src="{{ asset('/imagens/' . $p->imagem) }}" class="card-img-top" alt="...">
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title text-primary">{{ $p->nome }}</h5>
                         <h5 class="text-danger">R$ {{ number_format($p->preco, 2, ',', '.') }}</h5>
