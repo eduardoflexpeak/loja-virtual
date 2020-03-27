@@ -6,6 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
 <body>
 
@@ -56,5 +58,21 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    @if(Session::has('sucesso') || Session::has('falha'))
+        <script>
+            Swal.fire({
+                text: '{{ Session::get('sucesso') ?? Session::get('falha') }}',
+                @if (Session::has('sucesso'))
+                    icon: 'success',
+                @else
+                    icon: 'error',
+                @endif
+                timer: 3000,
+                showConfirmButton: false,
+                timerProgressBar: true
+            })
+        </script>
+    @endif
 </body>
 </html>

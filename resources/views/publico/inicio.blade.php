@@ -14,7 +14,8 @@
 
                         {!! Form::open(['url' => route('publico.carrinho.store')]) !!}
                             {!! Form::hidden('produto', $p->id) !!}
-                            {!! Form::submit('Adicionar ao Carrinho', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::number('quantidade', 1, ['class' => 'form-control text-center mb-1']) !!}
+                            {!! Form::submit('Adicionar ao Carrinho', ['class' => 'btn btn-primary btn-block']) !!}
                         {!! Form::close() !!}
                     </div>
                 </div>
